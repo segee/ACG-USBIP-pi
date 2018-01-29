@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  vars:
+    vm_ip: "{{ip}}"
+    ssh_port: "{{ (vm_ip | int) + 7000}}"
+    usbip_port: "{{ (vm_ip | int) + 6000}}"
+  tasks:
+
+  - name: Install autossh
+    become: true
+    apt:
+      name: autossh
+      state: present
+
+  - name: Update ssh tunnel service file
+    become: true
+    lineinfile:
+      path: /etc/rc.local
+      state: present
+      create: yes
+      line: sleep 120 && /usr/bin/autossh -M 0 -q -N -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" temp@204.197.1.35 -R {{ssh_port}}:localhost:22
+  - name: Update usbip tunnel service file
+    become: true
+    lineinfile:
+      path: /etc/rc.local
+      state: present
+      create: yes
+      line: sleep 120 && /usr/bin/autossh -M 0 -q -N -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" temp@204.197.1.35 -R {{usbip_port}}:localhost:3240
