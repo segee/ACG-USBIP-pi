@@ -2,3 +2,4 @@
 sudo enable_usbip_server.sh
 sudo update_tunnels.sh
 ansible-playbook /usr/local/bin/ACG-USBIP-pi/playbooks/enable_udevrules.yml --ask-sudo-pass
+echo You need to reboot in order to have some changes

@@ -8,4 +8,4 @@
       path: /etc/udev/rules.d/91-usbip-server-tools.rules
       create: yes
       state: present
-      line: SUBSYSTEM=="usb" ATTRS{idVendor}=="1781" ATTRS{idProduct}=="0c9f" RUN+="/usr/bin/usbip bind -b $kernel"
+      line: SUBSYSTEM=="usb" ATTRS{idVendor}!="1781" RUN+="/usr/bin/usbip bind -b $kernel"
