@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  tasks:
+
+  - name: Enable rpi modules
+    become: true
+    lineinfile:
+      path: /etc/modules
+      state: present
+      create: yes
+      line: usbip
+
+  - name: Enable other module
+    become: true
+    lineinfile:
+      path: /etc/modules
+      state: present
+      create: yes
+      line: usbip_common_mod
+
+  - name: Enable daemon
+    become: true
+    lineinfile:
+      path: /etc/local
+      state: present
+      create: yes
+      line: usbip -D
