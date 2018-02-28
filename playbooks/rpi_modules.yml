@@ -10,13 +10,29 @@
       create: yes
       line: usbip
 
-  - name: Enable other module
+  - name: Enable usbip-host
     become: true
     lineinfile:
       path: /etc/modules
       state: present
       create: yes
-      line: usbip_common_mod
+      line: usbip-host
+    
+  - name: Enable usbip-core
+    become: true
+    lineinfile:
+      path: /etc/modules
+      state: present
+      create: yes
+      line: usbip-core
+      
+  - name: Enable vhci-hcd
+    become: true
+    lineinfile:
+      path: /etc/modules
+      state: present
+      create: yes
+      line: vhci-hcd
 
   - name: Enable daemon
     become: true
