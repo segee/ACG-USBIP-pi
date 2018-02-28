@@ -23,7 +23,7 @@ ansible-playbook /usr/local/bin/ACG-USBIP-pi/playbooks/rpi_modules.yml --ask-sud
 echo "Kernel modules added!"
 
 echo "Starting USB IP daemon..."
-sudo usbip -D > /dev/null &
+sudo usbipd -D > /dev/null &
 echo "USB IP daemon started!"
 
 echo "If all looks good, continue setup. If not, something went wrong.\n Either way, bailing out."
