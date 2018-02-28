@@ -5,5 +5,5 @@
   - name: Disable udev rules
     become: true
     file:
-      path: /etc/udev/rules.d/91-usbip-server-tools.rules
+      name: /etc/udev/rules.d/91-usbip-server-tools.rules
       state: absent
