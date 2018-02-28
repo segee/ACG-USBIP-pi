@@ -21,7 +21,7 @@
   - name: Enable daemon
     become: true
     lineinfile:
-      path: /etc/local
+      path: /etc/rc.local
       state: present
       create: yes
       line: usbip -D
