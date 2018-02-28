@@ -9,8 +9,9 @@ sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible -y
 echo "enabling USB IP kernel modules..."
-sudo modprobe usbip > /dev/null &
-sudo modprobe usbip_common_mod > /dev/null &
+sudo modprobe usbip-host > /dev/null &
+sudo modprobe usbip-core > /dev/null &
+sudo modprobe vhci-hcd > /dev/null &
 wait
 echo "USB IP kernel modules enabled!"
 
