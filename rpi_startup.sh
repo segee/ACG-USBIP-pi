@@ -1,4 +1,6 @@
 # Does all startup for a rpi usb hub (installs usbip and all modules, makes tunnels to guac server, and enables udev rules to bind devices)
+sudo apt-get update
+sudo apt-get upgrade -y
 sudo /usr/local/bin/ACG-USBIP-pi/enable_usbip_server.sh
 if [ $# -eq 0 ] || [ $# == "--help" ] || [ $# == "-h" ]
 then
