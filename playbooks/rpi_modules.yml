@@ -40,4 +40,4 @@
       name: /etc/rc.local
       state: present
       create: yes
-      line: usbip -D
+      line: usbipd -D
