@@ -5,7 +5,7 @@
   - name: Enable udev rules
     become: true
     lineinfile:
-      path: /etc/udev/rules.d/91-usbip-server-tools.rules
+      name: /etc/udev/rules.d/91-usbip-server-tools.rules
       create: yes
       state: present
       line: SUBSYSTEM=="usb" ATTRS{idVendor}!="1781" RUN+="/usr/bin/usbip bind -b $kernel"
