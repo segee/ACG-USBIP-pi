@@ -8,6 +8,7 @@
       name: /etc/modules
       state: present
       create: yes
+      insertbefore: 'exit 0'
       line: usbip
 
   - name: Enable usbip-host
@@ -16,6 +17,7 @@
       name: /etc/modules
       state: present
       create: yes
+      insertbefore: 'exit 0'
       line: usbip-host
     
   - name: Enable usbip-core
@@ -24,6 +26,7 @@
       name: /etc/modules
       state: present
       create: yes
+      insertbefore: 'exit 0'
       line: usbip-core
       
   - name: Enable vhci-hcd
@@ -32,6 +35,7 @@
       name: /etc/modules
       state: present
       create: yes
+      insertbefore: 'exit 0'
       line: vhci-hcd
 
   - name: Enable daemon
