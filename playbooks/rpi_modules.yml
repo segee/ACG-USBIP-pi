@@ -40,4 +40,5 @@
       name: /etc/rc.local
       state: present
       create: yes
+      insertbefore: 'exit 0'
       line: usbipd -D
