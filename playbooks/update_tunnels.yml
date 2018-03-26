@@ -17,10 +17,12 @@
     lineinfile:
       name: /etc/rc.local
       state: present
+      insertbefore: 'exit 0'
       line: sleep 60 &&  /usr/bin/autossh -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@ece477-vcl.acg.maine.edu -R {{ssh_port}}:localhost:22 &
   - name: Update usbip tunnel service file
     become: true
     lineinfile:
       name: /etc/rc.local
       state: present
+      insertbefore: 'exit 0'
       line: sleep 60 && /usr/bin/autossh -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@ece477-vcl.acg.maine.edu -R {{usbip_port}}:localhost:3240 &
