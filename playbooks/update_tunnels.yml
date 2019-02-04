@@ -2,7 +2,7 @@
 - hosts: localhost
   vars:
     vm_ip: "{{ip}}"
-    ssh_port: "{{ (vm_ip | int) + 7000}}"
+    xrdp_port: "{{ (vm_ip | int) + 7000}}"
     usbip_port: "{{ (vm_ip | int) + 6000}}"
   tasks:
 
@@ -18,11 +18,11 @@
       name: /etc/rc.local
       state: present
       insertbefore: 'exit 0'
-      line: sleep 60 &&  /usr/bin/autossh -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@ece477-vcl.acg.maine.edu -R {{ssh_port}}:localhost:22 &
+      line: sleep 60 &&  /usr/bin/autossh -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@204.197.1.140 -R {{xrdp_port}}:localhost:3389 &
   - name: Update usbip tunnel service file
     become: true
     lineinfile:
       name: /etc/rc.local
       state: present
       insertbefore: 'exit 0'
-      line: sleep 60 && /usr/bin/autossh -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@ece477-vcl.acg.maine.edu -R {{usbip_port}}:localhost:3240 &
+      line: sleep 60 && /usr/bin/autossh -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@204.197.1.140 -R {{usbip_port}}:localhost:3240 &
