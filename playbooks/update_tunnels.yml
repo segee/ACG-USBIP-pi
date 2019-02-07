@@ -11,8 +11,15 @@
     apt:
       name: autossh
       state: present
+  - name: set up ssh
+    become: true
+    lineinfile:
+      name: /etc/rc.local
+      state: present
+      insertbefore: 'exit 0'
+      line: cd /
 
-  - name: Update ssh tunnel service file
+  - name: Update xrdp tunnel service file
     become: true
     lineinfile:
       name: /etc/rc.local
