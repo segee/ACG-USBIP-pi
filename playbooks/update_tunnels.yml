@@ -25,11 +25,11 @@
       name: /etc/rc.local
       state: present
       insertbefore: 'exit 0'
-      line: sleep 60 &&  /usr/bin/autossh -M 0 -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@204.197.1.140 -R {{xrdp_port}}:localhost:3389 &
+      line: sleep 60 &&  /usr/bin/autossh -M 0 -oServerAliveInterval=60 -oServerAliveCountMax=2 -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@204.197.1.140 -R {{xrdp_port}}:localhost:3389 &
   - name: Update usbip tunnel service file
     become: true
     lineinfile:
       name: /etc/rc.local
       state: present
       insertbefore: 'exit 0'
-      line: sleep 60 && /usr/bin/autossh -M 0 -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@204.197.1.140 -R {{usbip_port}}:localhost:3240 &
+      line: sleep 60 && /usr/bin/autossh -M 0 -oServerAliveInterval=60 -oServerAliveCountMax=2 -oStrictHostKeyChecking=no -i /usr/local/bin/ACG-USBIP-pi/id_rsa -T -f -N  tunnel@204.197.1.140 -R {{usbip_port}}:localhost:3240 &
